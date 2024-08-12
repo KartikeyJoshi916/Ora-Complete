@@ -1,0 +1,18 @@
+# Set the default directory index file
+
+DirectoryIndex index.html
+
+# Allow access to all files (Apache 2.4+ syntax)
+
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
+
+# Enable mod_rewrite for URL rewriting (optional)
+
+RewriteEngine On
+RewriteRule ^(.\*)$ index.php/$1 [L]
